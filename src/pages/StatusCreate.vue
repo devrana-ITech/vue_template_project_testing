@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import api from '@/api';
+import api from '@/Api';
 import { reactive } from 'vue';
 
 
@@ -9,6 +9,7 @@ const formData= reactive({
     name:"",
     description:""
 })
+
 
 const submitData=()=>{
     api.post("/status", formData)
@@ -25,8 +26,10 @@ const submitData=()=>{
 </script>
 
 <template>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
+        <a class="btn btn-info" href="/status">Back</a>
+    </div>
 <div class="row">
-        <!-- Baisc Form Controls start -->
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
@@ -52,7 +55,6 @@ const submitData=()=>{
                 </div>
             </div>
         </div>
-
     </div>
 </template>
 

@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import api from '@/api';
+import api from '@/Api';
 import { onMounted, reactive } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 
+const router = useRouter();
 
 const {id} = useRoute().params;
 
@@ -36,7 +37,7 @@ const submitData=()=>{
     api.put("/status/"+formData.id, formData)
     .then((res)=>{
         console.log(res.data);
-        
+        router.push({path:'/status'});
     })
     .catch((err)=>{
         console.log(err);
@@ -48,13 +49,15 @@ const submitData=()=>{
 
 
 <template>
- 
+ <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
+        <a class="btn btn-info" href="/status">Back</a>
+    </div>
  <div class="row">
         <!-- Baisc Form Controls start -->
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Baisc Form Controls</h5>
+                    <h5>Basic Form Controls</h5>
                 </div>
                   {{ formData }}
                 <div class="card-body">
